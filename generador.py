@@ -3,25 +3,25 @@ from matplotlib.patches import FancyArrowPatch
 
 
 # === Definición del DFA ===
-states = {"Insertar Tarjeta","Insertar PIN","Menu","Dollar", "Soles", "Transaccion", "Imprimir recibo", "Fin de operacion"}
+states = {"q0","q1","q2","q4", "q3", "q5", "q6", "q7"}
 alphabet = {"a","b","c"}
-delta = {("Insertar Tarjeta","a"):"Insertar PIN",
-        ("Insertar Tarjeta","c"):"Insertar Tarjeta",
-        ("Insertar Tarjeta","b"):"Fin de operacion",
-        ("Insertar PIN","a"):"Menu",
-        ("Menu","c"):"Menu",
-        ("Menu","a"):"Soles",
-        ("Menu","a"):"Dollar",
-        ("Soles","b"):"Menu",
-        ("Dollar","b"):"Menu",
-        ("Soles","a"):"Transaccion",
-        ("Dollar","a"):"Transaccion",
-        ("Transaccion","a"):"Imprimir recibo",
-        ("Transaccion","b"):"Fin de operacion",
-        ("Imprimir recibo","a"):"Fin de operacion"}
+delta = {("q0","a"):"q1",
+        ("q0","c"):"q0",
+        ("q0","b"):"q7",
+        ("q1","a"):"q2",
+        ("q2","c"):"q2",
+        ("q2","a"):"q3",
+        ("q2","a"):"q4",
+        ("q3","b"):"q2",
+        ("q4","b"):"q2",
+        ("q3","a"):"q5",
+        ("q4","a"):"q5",
+        ("q5","a"):"q6",
+        ("q5","b"):"q7",
+        ("q6","a"):"q7"}
 
 
-q0, F = "q0", {"q2"}
+q0, F = "q0", {"q7"}
 
 
 # === Simulación ===
